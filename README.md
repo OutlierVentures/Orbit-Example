@@ -1,6 +1,6 @@
 # Orbit-Example
 
-Example use of OrbitDB for managing JSON files.
+Example use of OrbitDB for JSON files indexed by name.
 
 ## Requirements
 - Node.js
