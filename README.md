@@ -7,6 +7,7 @@ Example use of OrbitDB for JSON files indexed by name.
 - npm
     - `ipfs` package
     - `orbit-db` package
+    `npm install ipfs orbit-db`
 
 ## Walkthrough
 `doc_db.js` systematically walks through the functions available for docs type databases.
