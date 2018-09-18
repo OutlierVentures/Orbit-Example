@@ -9,7 +9,7 @@ Example use of OrbitDB for JSON files indexed by name.
     - `orbit-db` package
 
 ## Walkthrough
-The walkthrough for each function available for the docs type database can be found in `doc_db.js`.
+`doc_db.js` systematically walks through the functions available for docs type databases.
 To run, navigate to this folder in your terminal and type:
 ```
 node doc_db.js
