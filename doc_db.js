@@ -1,7 +1,3 @@
-//////////////////////////////////////////////////////////////
-// OrbitDB setup
-//////////////////////////////////////////////////////////////
-
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 
@@ -24,19 +20,32 @@ ipfs.on('ready', async () => {
     const db = await orbitdb.docs('doc_db', { indexBy: 'name' })
 
     // Log the database address so it can be replicated
-    console.log(db.address.toString())
+    console.log("We are go! The database address is:\n"
+                + db.address.toString())
 
     // Add three documents, e.g. representing people
-    await db.put({ _id: 'ID1', name: 'Alice', age: 16 })
-    await db.put({ _id: 'ID2', name: 'Bob', age: 17 })
-    await db.put({ _id: 'ID3', name: 'Carol', age: 18 })
+    await db.put({ _id: 'ID1', name: 'Alice', age: 17 })
+    await db.put({ _id: 'ID2', name: 'Bob', age: 18 })
+    await db.put({ _id: 'ID3', name: 'Carol', age: 19 })
+    console.log("3 users have been added to the database.")
 
+    // Get a doc
+    console.log("Alice's file looks like this:")
+    const profile = db.get('Alice')
+    console.log(profile)
 
     // Filter docs
+    console.log("Let's get rid of under 18s.")
     const youngsters = db.query((doc) => doc.age < 18)
-
     for (i = 0; i < youngsters.length; i++) {
-        console.log(youngsters[i].name + " is underage!")
+        let youngster = youngsters[i].name
+        await db.del(youngster)
+        console.log(youngster + " has been removed.")
     }
+
+    // Show entire database with tautology mapper
+    // Query returns a JSON array so use separate log statement
+    console.log("Remaining files in the database:")
+    console.log(db.query((doc) => doc))
 
 })
