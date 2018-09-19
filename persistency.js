@@ -12,6 +12,10 @@ const ipfsOptions = {
 const ipfs = new IPFS(ipfsOptions)
 console.log("IPFS is up and running.")
 
+// Handle errors
+ipfs.on('error', (e) => console.error(e))
+
+// Start working with OrbitDB once the IPFS instance is ready
 ipfs.on('ready', async () => {
 
     // Create OrbitDB instance on the IPFS instance
