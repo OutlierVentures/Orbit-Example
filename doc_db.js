@@ -49,9 +49,9 @@ ipfs.on('ready', async () => {
     console.log("Remaining files in the database:")
     console.log(db.query((doc) => doc))
 
+    // Disconnect
     await orbitdb.disconnect()
-    console.log("Disconnected!")
-    ipfs.stop(() => {
-    // node is now 'offline'
-    })
+    ipfs.stop(() => {})
+    console.log("Disconnected from OrbitDB and IPFS!")
+
 })
