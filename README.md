@@ -32,4 +32,13 @@ node doc_db.js
 ```
 
 ### Persistency between connections to IPFS/OrbitDB
-`persistency.js` shows how to open an OrbitDB database saved to disk. It should be run after `doc_db.js`.
+`persistency.js` shows how to open an OrbitDB database saved to disk. It should be run after `doc_db.js`. The script:
+1. Sets up a new instance of IPFS and OrbitDB
+2. Loads the database created by `doc_db.js` from disk
+3. Displays the database again
+4. Disconnects from OrbitDB and IPFS
+
+To run, as above type:
+```
+node persistency.js
+```
