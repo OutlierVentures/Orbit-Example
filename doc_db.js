@@ -10,12 +10,17 @@ const ipfsOptions = {
 
 // Create IPFS instance and pass the pubsub option in.
 const ipfs = new IPFS(ipfsOptions)
+console.log("IPFS is up and running.")
 
+// Handle errors
 ipfs.on('error', (e) => console.error(e))
+
+// Start working with OrbitDB once the IPFS instance is ready
 ipfs.on('ready', async () => {
 
     // Create OrbitDB instance on the IPFS instance
     const orbitdb = new OrbitDB(ipfs)
+    console.log("OrbitDB is up and running.")
 
     // Create our docs type database using index-by-name option
     const db = await orbitdb.docs('doc_db', { indexBy: 'name' })
