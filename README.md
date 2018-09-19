@@ -1,4 +1,4 @@
-# Orbit-Example
+# Orbit Examples
 
 Example use of OrbitDB for JSON files indexed by name.
 
