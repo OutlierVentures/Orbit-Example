@@ -1,3 +1,6 @@
+// Open a stored database after having gone offline
+// Run this after doc_db.js
+
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 
@@ -26,6 +29,7 @@ ipfs.on('ready', async () => {
     const db = await orbitdb.open('/orbitdb/Qmc95aEEVfR4T64fJZRSXK34gULCN9Nvfwim8oBAW2XbFs/doc_db')
     await db.load()
 
+    // Show the database again
     console.log("Here's that database again:")
     console.log(db.query((doc) => doc))
 

@@ -1,3 +1,5 @@
+// Set up a new docs type OrbitDB database
+
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 
