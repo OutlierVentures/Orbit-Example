@@ -11,6 +11,7 @@ const ipfsOptions = {
 // Create IPFS instance and pass the pubsub option in.
 const ipfs = new IPFS(ipfsOptions)
 
+ipfs.on('error', (e) => console.error(e))
 ipfs.on('ready', async () => {
 
     // Create OrbitDB instance on the IPFS instance
@@ -48,4 +49,9 @@ ipfs.on('ready', async () => {
     console.log("Remaining files in the database:")
     console.log(db.query((doc) => doc))
 
+    await orbitdb.disconnect()
+    console.log("Disconnected!")
+    ipfs.stop(() => {
+    // node is now 'offline'
+    })
 })
