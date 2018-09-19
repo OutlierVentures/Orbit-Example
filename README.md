@@ -1,6 +1,6 @@
 # Orbit Examples
 
-Example use of OrbitDB for JSON files indexed by name.
+Example uses of the OrbitDB document type database.
 
 ## Requirements
 - Node.js
