@@ -9,9 +9,9 @@ Example uses of the OrbitDB document type database.
     - `orbit-db` package
 
 ## Walkthrough
-If you don't have the npm packages yet, install them:
+Make sure npm dependencies are installed:
 ```
-npm install ipfs orbit-db
+npm install
 ```
 Each file walks through the use of OrbitDB features with code commenting.
 
