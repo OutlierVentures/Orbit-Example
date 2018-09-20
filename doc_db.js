@@ -37,6 +37,14 @@ ipfs.on('ready', async () => {
     await db.put({ _id: 'ID3', name: 'Carol', age: 19 })
     console.log("3 users have been added to the database.")
 
+    // Get all docs by regex filter
+    console.log("All people with an 'o' in their name.")
+    const oPeople = db.query((doc) => doc.name.match(/o/))
+    for (i = 0; i < oPeople.length; i++) {
+        let oPerson = oPeople[i];
+        console.log(oPerson);
+    }
+
     // Get a doc
     console.log("Alice's file looks like this:")
     const profile = db.get('Alice')
