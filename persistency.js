@@ -3,6 +3,7 @@
 
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
+const config = require('./config')
 
 // Pubsub option must be passed to all components
 const ipfsOptions = {
@@ -26,7 +27,7 @@ ipfs.on('ready', async () => {
     console.log("OrbitDB is up and running.")
 
     // Open and load the database created in doc_db.js
-    const db = await orbitdb.open('/orbitdb/Qmc95aEEVfR4T64fJZRSXK34gULCN9Nvfwim8oBAW2XbFs/doc_db')
+    const db = await orbitdb.open(config.address)
     await db.load()
 
     // Show the database again

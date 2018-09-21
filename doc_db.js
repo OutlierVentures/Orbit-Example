@@ -2,6 +2,7 @@
 
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
+const fs = require('fs')
 
 // Pubsub option must be passed to all components
 const ipfsOptions = {
@@ -27,9 +28,18 @@ ipfs.on('ready', async () => {
     // Create our docs type database using index-by-name option
     const db = await orbitdb.docs('doc_db', { indexBy: 'name' })
 
-    // Log the database address so it can be replicated
-    console.log("We are go! The database address is:\n"
-                + db.address.toString())
+    // Save the database address so it can be loaded/replicated
+    // JSON is easy to use since we can 'require' it
+    const config = {
+        address: db.address.toString()
+    }
+    fs.writeFile('config.json', JSON.stringify(config), function (err) {
+        if (err) {
+            console.log(err.message)
+        }
+    })
+
+    console.log("Database is a go!")
 
     // Add three documents, e.g. representing people
     await db.put({ _id: 'ID1', name: 'Alice', age: 17 })
